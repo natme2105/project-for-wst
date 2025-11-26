@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Settings</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #bcb7b7;
+}
+
+/* TOP BLUE HEADER */
+.top-header {
+    width: 100%;
+    background: #22a8ff;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #fff;
+}
+
+.system-title {
+    font-weight: normal;
+}
+
+.admin-label {
+    font-weight: bold;
+}
+
+/* LAYOUT WRAPPER */
+.layout {
+    display: flex;
+    height: calc(100vh - 50px);
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 230px;
+    background: #203040;
+    padding-top: 10px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    padding: 12px 18px;
+    color: white;
+    font-size: 14px;
+}
+
+.sidebar li.active {
+    background: #6b7884;
+}
+
+.sidebar li:hover {
+    background: #54606c;
+    cursor: pointer;
+}
+
+/* MAIN CONTENT */
+.content {
+    flex: 1;
+    background: #ffffff;
+    padding: 20px;
+    position: relative;
+}
+
+.content h2 {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+/* BUTTONS */
+.button-row {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.button-row button {
+    padding: 8px 20px;
+    border: 1px solid #22a8ff;
+    background: white;
+    color: black;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button-row button:hover {
+    background: #22a8ff;
+    color: white;
+}
+
+/* LOGOUT BUTTON */
+.logout {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 6px 18px;
+    border: 1px solid #22a8ff;
+    background: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.logout:hover {
+    background: #22a8ff;
+    color: white;
+}
+
+/* RESPONSIVE FIXES */
+@media (max-width: 900px) {
+    .button-row {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 700px) {
+    .layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+
+    .logout {
+        position: static;
+        margin-top: 20px;
+    }
+}
+
+</style>
+
+<header class="top-header">
+    <span class="system-title">Up Cycle:Smart Waste Management & Recycling Monitoring System</span>
+    <span class="admin-label">Admin</span>
+</header>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <ul>
+            <li>Home</li>
+            <li>Collection Schedule</li>
+            <li>Announcement</li>
+            <li>Tips</li>
+            <li class="active">Settings</li>
+        </ul>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+        <h2>Settings</h2>
+
+        <div class="button-row">
+            <button>Activity Log</button>
+            <button>User Feedback</button>
+            <button>User Management</button>
+            <button>User Report</button>
+        </div>
+
+        <button class="logout">Logout</button>
+    </main>
+
+</div>
+
+</body>
+</html>

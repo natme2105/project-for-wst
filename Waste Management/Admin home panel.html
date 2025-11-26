@@ -1,0 +1,243 @@
+<!-- ...existing code... -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Up Cycle Admin Panel</title>
+
+<style>
+    :root {
+        --topbar-height: 56px;
+        --sidebar-width: 220px;
+        --accent: #1976D2;
+        --sidebar-bg: #1f2d3a;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #d3d3d3;
+        min-height: 100vh;
+    }
+
+    /* Top Navbar */
+    .topbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: var(--topbar-height);
+        background: var(--accent);
+        color: white;
+        padding: 0 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 18px;
+        z-index: 30;
+    }
+
+    .topbar .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .btn-hamburger {
+        display: none;
+        background: transparent;
+        border: none;
+        color: white;
+        font-size: 22px;
+        cursor: pointer;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        width: var(--sidebar-width);
+        background: var(--sidebar-bg);
+        height: calc(100vh - var(--topbar-height));
+        padding-top: 20px;
+        color: white;
+        position: fixed;
+        top: var(--topbar-height);
+        left: 0;
+        overflow-y: auto;
+        transition: transform 0.25s ease;
+        z-index: 25;
+    }
+
+    .sidebar a {
+        display: block;
+        padding: 12px 20px;
+        text-decoration: none;
+        color: white;
+        font-size: 15px;
+    }
+
+    .sidebar a:hover {
+        background: #2f4050;
+    }
+
+    /* When sidebar is closed on small screens */
+    .sidebar.closed {
+        transform: translateX(-105%);
+    }
+
+    /* Main Content */
+    .main-content {
+        margin-top: var(--topbar-height);
+        padding: 24px;
+        background: white;
+        min-height: calc(100vh - var(--topbar-height));
+        transition: margin-left 0.25s ease, padding 0.25s ease;
+    }
+
+    h2 {
+        color: var(--accent);
+        margin-top: 0;
+    }
+
+    /* Desktop layout: keep sidebar visible and push content */
+    @media (min-width: 768px) {
+        .btn-hamburger {
+            display: none;
+        }
+
+        .sidebar {
+            transform: none;
+        }
+
+        .main-content {
+            margin-left: var(--sidebar-width);
+        }
+
+        .sidebar.closed {
+            transform: none;
+        }
+    }
+
+    /* Mobile layout: hide sidebar by default and show hamburger */
+    @media (max-width: 767.98px) {
+        .btn-hamburger {
+            display: inline-flex;
+        }
+
+        .sidebar {
+            width: 75%;
+            max-width: 320px;
+            box-shadow: 4px 0 18px rgba(0,0,0,0.2);
+        }
+
+        /* Dim background when sidebar open */
+        .overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.35);
+            z-index: 20;
+        }
+
+        .overlay.show {
+            display: block;
+        }
+
+        /* Ensure main content uses full width on small screens */
+        .main-content {
+            margin-left: 0;
+            padding: 16px;
+        }
+    }
+
+    /* Utility small tweaks */
+    .small {
+        font-size: 0.9rem;
+    }
+</style>
+</head>
+<body>
+
+<!-- Top Navigation -->
+<div class="topbar">
+    <div class="brand">
+        <button class="btn-hamburger" id="hamburger" aria-label="Toggle menu">☰</button>
+        <div class="small">Up Cycle: Waste Management & Recycling Monitoring System</div>
+    </div>
+    <div class="small">Admin</div>
+</div>
+
+<!-- Sidebar Menu -->
+<div class="sidebar closed" id="sidebar">
+    <a href="#">Home</a>
+    <a href="#">Collection Schedule</a>
+    <a href="#">Announcement</a>
+    <a href="#">Tips</a>
+    <a href="#">Settings</a>
+</div>
+
+<!-- overlay for mobile when sidebar open -->
+<div class="overlay" id="overlay"></div>
+
+<!-- Main Content Area -->
+<div class="main-content" id="main">
+    <h2>Welcome to Up Cycle: Admin Panel</h2>
+
+    <p>
+        Welcome to the <strong>Up Cycle Admin Panel</strong>, where you can efficiently
+        manage your community’s waste collection system and keep residents informed.
+        Here’s what you can do:
+    </p>
+
+    <ul>
+        <li><strong>Collection Schedules:</strong> Organize and update waste collection schedules for your community.</li>
+        <li><strong>Announcements:</strong> Publish updates, news, or events regarding waste management.</li>
+        <li><strong>Tips:</strong> Share helpful tips for waste reduction and eco-friendly practices.</li>
+        <li><strong>Settings:</strong> Adjust system configurations to suit your management needs.</li>
+    </ul>
+
+    <p>Start managing and enhancing your community’s waste management processes today!</p>
+</div>
+
+<script>
+    // Sidebar toggle for small screens
+    (function(){
+        const sidebar = document.getElementById('sidebar');
+        const hamburger = document.getElementById('hamburger');
+        const overlay = document.getElementById('overlay');
+
+        function openSidebar() {
+            sidebar.classList.remove('closed');
+            overlay.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeSidebar() {
+            sidebar.classList.add('closed');
+            overlay.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        hamburger.addEventListener('click', function(){ 
+            if (sidebar.classList.contains('closed')) openSidebar(); else closeSidebar();
+        });
+
+        overlay.addEventListener('click', closeSidebar);
+
+        // Ensure correct state on resize
+        window.addEventListener('resize', function(){
+            if (window.innerWidth >= 768) {
+                sidebar.classList.remove('closed');
+                overlay.classList.remove('show');
+                document.body.style.overflow = '';
+            } else {
+                sidebar.classList.add('closed');
+            }
+        });
+
+        // initialize
+        if (window.innerWidth >= 768) sidebar.classList.remove('closed');
+    })();
+</script>
+
+</body>
+</html>

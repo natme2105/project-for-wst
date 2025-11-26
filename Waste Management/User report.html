@@ -1,0 +1,236 @@
+<!-- ...existing code... -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>User Report</title>
+<style>
+  :root{
+    --topbar-height:56px;
+    --sidebar-width:250px;
+    --accent:#1e88e5;
+    --sidebar-bg:#233344;
+  }
+
+  *{box-sizing:border-box}
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #d3d1d1;
+    min-height:100vh;
+  }
+
+  /* Topbar */
+  .topbar {
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    height:var(--topbar-height);
+    background-color: var(--accent);
+    color: white;
+    padding: 0 16px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    z-index:40;
+  }
+  .brand { font-size:18px; white-space:nowrap; }
+
+  .btn-hamburger{
+    display:none;
+    background:transparent;
+    border:0;
+    color:white;
+    font-size:22px;
+    cursor:pointer;
+  }
+
+  /* Layout */
+  .app {
+    display:flex;
+    margin-top:var(--topbar-height);
+    min-height:calc(100vh - var(--topbar-height));
+  }
+
+  .sidebar {
+    width:var(--sidebar-width);
+    background-color: var(--sidebar-bg);
+    color: white;
+    padding-top: 20px;
+    flex-shrink: 0;
+    height: calc(100vh - var(--topbar-height));
+    position: fixed;
+    top: var(--topbar-height);
+    left: 0;
+    overflow-y: auto;
+    transition: transform .22s ease;
+    z-index:35;
+  }
+
+  .sidebar a {
+    display:block;
+    padding:15px 20px;
+    color:white;
+    text-decoration:none;
+    font-size:16px;
+  }
+  .sidebar a:hover{ background:#2f4a63 }
+
+  .sidebar.closed { transform: translateX(-110%); }
+
+  .overlay {
+    display:none;
+    position:fixed;
+    inset:0;
+    background: rgba(0,0,0,.35);
+    z-index:30;
+  }
+  .overlay.show { display:block; }
+
+  .content-wrap {
+    flex:1;
+    margin-left: var(--sidebar-width);
+    padding: 20px;
+    width: 100%;
+    transition: margin-left .22s ease, padding .22s ease;
+  }
+
+  .content {
+    background:white;
+    border-radius:8px;
+    padding:20px;
+    min-height: calc(100vh - var(--topbar-height) - 40px);
+    margin-bottom:20px;
+  }
+
+  .title { font-size:26px; text-align:center; margin-bottom:20px; color:#333; }
+
+  .table-wrapper { width:100%; overflow-x:auto; }
+
+  table {
+    width:100%;
+    border-collapse:collapse;
+    min-width:700px;
+  }
+  th, td {
+    border:1px solid #ccc;
+    padding:10px;
+    text-align:center;
+    font-size:14px;
+  }
+  th { background:var(--accent); color:#fff; }
+
+  .btn-edit{ background:#4CAF50; color:#fff; border:0; padding:6px 12px; border-radius:4px; cursor:pointer; }
+  .btn-delete{ background:#e53935; color:#fff; border:0; padding:6px 12px; border-radius:4px; cursor:pointer; }
+
+  /* Responsive adjustments */
+  @media (max-width: 991px) {
+    .content-wrap { margin-left: 0; padding:16px; }
+    .sidebar { width:75%; max-width:320px; }
+    .sidebar.closed { transform: translateX(-110%); }
+    .btn-hamburger { display:inline-flex; align-items:center; gap:8px; }
+  }
+
+  @media (max-width: 700px) {
+    table { min-width:600px; }
+    th, td { padding:8px; font-size:13px; }
+    .title { font-size:20px; }
+  }
+
+  /* Very small screens: allow horizontal scroll for table and make action buttons smaller */
+  @media (max-width: 420px) {
+    table { min-width:520px; }
+    th, td { padding:6px; font-size:12px; }
+    .btn-edit, .btn-delete { padding:5px 8px; font-size:12px; }
+    .brand { font-size:15px; }
+  }
+
+  /* Utility */
+  .small { font-size:.9rem; color:#fff }
+  
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <button class="btn-hamburger" id="hamburger" aria-label="Toggle menu">☰</button>
+      <div class="brand">Up Cycle: Waste Management & Recycling Monitoring System</div>
+    </div>
+    <div class="small">Admin</div>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+
+  <div class="app">
+    <nav class="sidebar closed" id="sidebar">
+      <a href="#">Home</a>
+      <a href="#">Collection Schedule</a>
+      <a href="#">Announcement</a>
+      <a href="#">Tips</a>
+      <a href="#">Settings</a>
+    </nav>
+
+    <main class="content-wrap">
+      <div class="content">
+        <div class="title">User Report</div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Report ID</th>
+                <th>Username</th>
+                <th>Report text</th>
+                <th>Report Image</th>
+                <th>Created At</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            
+          </table>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+<script>
+  (function(){
+    const sidebar = document.getElementById('sidebar');
+    const hamburger = document.getElementById('hamburger');
+    const overlay = document.getElementById('overlay');
+
+    function openSidebar(){
+      sidebar.classList.remove('closed');
+      overlay.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeSidebar(){
+      sidebar.classList.add('closed');
+      overlay.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+
+    hamburger.addEventListener('click', function(){
+      if (sidebar.classList.contains('closed')) openSidebar(); else closeSidebar();
+    });
+    overlay.addEventListener('click', closeSidebar);
+
+    window.addEventListener('resize', function(){
+      if (window.innerWidth >= 992) {
+        sidebar.classList.remove('closed');
+        overlay.classList.remove('show');
+        document.body.style.overflow = '';
+      } else {
+        sidebar.classList.add('closed');
+      }
+    });
+
+    // initialize state
+    if (window.innerWidth >= 992) sidebar.classList.remove('closed');
+  })();
+</script>
+</body>
+</html>

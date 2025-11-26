@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Feedback</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #c2bcbc;
+  }
+
+  .header {
+    background: #0095ff;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .container {
+    display: flex;
+    min-height: calc(100vh - 60px);
+  }
+
+  .sidebar {
+    width: 250px;
+    background: #1e3a5f;
+    color: white;
+    padding: 20px 0;
+    flex-shrink: 0;
+  }
+
+  .menu-item {
+    padding: 12px 20px;
+    cursor: pointer;
+  }
+
+  .menu-item:hover,
+  .menu-item.active {
+    background: #2f4e72;
+  }
+
+  .main {
+    flex: 1;
+    background: #f5f5f5;
+    padding: 40px;
+    text-align: center;
+  }
+
+  .feedback-box {
+    width: 60%;
+    max-width: 900px;
+    background: white;
+    margin: auto;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 1px solid #aaa;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .delete-btn {
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 5px 12px;
+    cursor: pointer;
+  }
+
+  .delete-btn:hover {
+    opacity: 0.8;
+  }
+.feedback-input {
+  width: 60%;
+  height: 60px;
+  border: 1px solid #888;
+  border-radius: 6px;
+  padding: 8px;
+  resize: vertical;
+  font-size: 14px;
+}
+
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+
+    .sidebar {
+      width: 100%;
+    }
+
+    .feedback-box {
+      width: 95%;
+      flex-direction: column;
+      gap: 10px;
+      text-align: left;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>Up Cycle: Waste Management & Recycling Monitoring System</div>
+  <div>Admin</div>
+</div>
+
+<div class="container">
+
+  <div class="sidebar">
+    <div class="menu-item">Home</div>
+    <div class="menu-item">Collection Schedule</div>
+    <div class="menu-item">Announcement</div>
+    <div class="menu-item">Tips</div>    
+    <div class="menu-item">Settings</div>
+  </div>
+
+  <div class="main">
+    <h1>Feedback</h1>
+
+    <div class="feedback-box">
+  <textarea class="feedback-input" placeholder="Type feedback here..."></textarea>
+  <div>2024-12-01 16:20:56(sample time)</div>
+  <button class="delete-btn">Delete</button>
+  </div>
+
+</div>
+
+</body>
+</html>

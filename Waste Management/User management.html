@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Management</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #d1cece;
+    }
+
+    /* Top bar */
+    .topbar {
+    flex-wrap: wrap;
+      width: 100%;
+      background-color: #1e88e5;
+      color: white;
+      padding: 15px;
+      font-size: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap; /* FIX: allows text to wrap instead of cutting */
+      gap: 10px;
+    }
+
+    /* Page layout */
+    .container {
+      display: flex;
+      height: auto;
+      min-height: calc(100vh - 60px);
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 260px;
+      background-color: #233344;
+      color: white;
+      padding-top: 20px;
+      flex-shrink: 0;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 16px 20px;
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .sidebar a:hover {
+      background-color: #2f4a63;
+    }
+
+    /* Content area */
+    .content {
+      flex: 1;
+      background: white;
+      margin: 20px;
+      padding: 30px;
+      border-radius: 8px;
+      overflow-x: auto; /* FIX: prevents table overflow */
+    }
+
+    /* Title */
+    .title {
+      font-size: 28px;
+      margin-bottom: 15px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .search-box {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 14px;
+    }
+
+    /* Input + Button */
+    .search-box input {
+      padding: 5px 7px;
+      border: 1px solid #888;
+      border-radius: 3px;
+    }
+
+    .search-box button {
+      padding: 5px 10px;
+      border: none;
+      background-color: #1e88e5;
+      color: white;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    /* Table */
+    table {
+      width: 100%;
+      min-width: 800px; /* FIX: keeps table readable on small phones */
+      border-collapse: collapse;
+      background: white;
+    }
+
+    table th, table td {
+      border: 1px solid #bfbfbf;
+      padding: 9px 10px;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    table th {
+      background-color: #1e88e5;
+      color: white;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+
+      /* Sidebar becomes horizontal scroll bar */
+      .container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        display: flex;
+        overflow-x: auto;
+      }
+
+      .sidebar a {
+        white-space: nowrap;
+        padding: 14px 18px;
+      }
+
+      /* Content padding reduced for phones */
+      .content {
+        margin: 10px;
+        padding: 15px;
+      }
+
+      .title {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    <div>Up Cycle:Smart Waste Management & Recycling Monitoring System</div>
+    <div>Admin</div>
+  </div>
+
+  <div class="container">
+
+    <div class="sidebar">
+      <a href="#">Home</a>
+      <a href="#">Collection Schedule</a>
+      <a href="#">Announcement</a>
+      <a href="#">Tips</a>
+      <a href="#">Settings</a>
+    </div>
+
+    <div class="content">
+      
+      <div class="title">User Management</div>
+
+      <div class="search-box">
+        <strong>Browser User:</strong> 
+        <input type="text" placeholder="Enter User">
+        <button>Search</button>
+      </div>
+
+      <table>
+        <tr>
+          <th>Username</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Address</th>
+          <th>Contact Number</th>
+          <th>Email</th>
+          <th>Role</th>
+        </tr>
+
+      </table>
+
+    </div>
+  </div>
+
+</body>
+</html>

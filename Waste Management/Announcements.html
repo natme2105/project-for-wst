@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Announcements</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #e6e6e6;
+    }
+
+    .topbar {
+      background: #0095d9;
+      color: white;
+      padding: 12px 20px;
+      font-size: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .container {
+      display: flex;
+      min-height: calc(100vh - 50px);
+    }
+
+    .sidebar {
+      width: 220px;
+      background: #243447;
+      color: white;
+      padding-top: 20px;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 12px 20px;
+      color: white;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      background: #3b4b5c;
+    }
+
+    .content {
+      flex: 1;
+      padding: 30px;
+      background: white;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .announcement-box {
+      background: #f2f2f2;
+      padding: 12px;
+      border-radius: 5px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 5px;
+    }
+
+    .btn-edit {
+      background: #4CAF50;
+      border: none;
+      color: white;
+      padding: 5px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn-delete {
+      background: #d9534f;
+      border: none;
+      color: white;
+      padding: 5px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn-add {
+      background: #1e90ff;
+      border: none;
+      color: white;
+      padding: 10px 22px;
+      border-radius: 5px;
+      cursor: pointer;
+      display: block;
+      margin: 20px auto 0 auto;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100%;
+      }
+      .announcement-box {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .buttons {
+        margin-top: 8px;
+
+
+        
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <span>Up Cycle: Waste Management & Recycling Monitoring System</span>
+    <span>Admin</span>
+  </div>
+
+  <div class="container">
+    <div class="sidebar">
+      <a href="#">Home</a>
+      <a href="#">Collection Schedule</a>
+      <a class="active" href="#">Announcement</a>
+      <a href="#">Tips</a>
+      <a href="#">Settings</a>
+    </div>
+
+    <div class="content">
+      <h2>Announcements</h2>
+
+      <div class="announcement-box">
+        <span>Sample</span>
+        <div class="buttons">
+          <button class="btn-edit">Edit</button>
+          <button class="btn-delete">Delete</button>
+        </div>
+      </div>
+
+      <div class="announcement-box">
+        <span>SAMPLE SAMPLE</span>
+        <div class="buttons">
+          <button class="btn-edit">Edit</button>
+          <button class="btn-delete">Delete</button>
+        </div>
+      </div>
+
+      <div class="announcement-box">
+        <span>sample</span>
+        <div class="buttons">
+          <button class="btn-edit">Edit</button>
+          <button class="btn-delete">Delete</button>
+        </div>
+      </div>
+
+      <button class="btn-add">Add New Announcement</button>
+
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Activity Log</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #e0e0e0;
+  }
+
+  .container {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    width: 250px;
+    background: #1e3a5f;
+    color: white;
+    padding: 20px 0;
+    flex-shrink: 0;
+  }
+
+  .sidebar h2 {
+    padding-left: 20px;
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+
+  .menu-item {
+    padding: 12px 20px;
+    cursor: pointer;
+  }
+
+  .menu-item:hover,
+  .menu-item.active {
+    background: #2f4e72;
+  }
+
+  /* Main content */
+  .main {
+    flex: 1;
+    background: #f5f5f5;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header {
+    background: #0095ff;
+    color: white;
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+
+  .activity-title {
+    font-size: 28px;
+    margin: 30px 0;
+  }
+
+  .log-box {
+    width: 80%;
+    max-width: 700px;
+    background: white;
+    border-radius: 30px;
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+    .sidebar {
+      width: 100%;
+    }
+    .log-box {
+      width: 95%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>Up Cycle: Waste Management & Recycling Monitoring System</div>
+  <div>Admin</div>
+</div>
+
+<div class="container">
+
+  <div class="sidebar">
+    <h2>Menu</h2>
+    <div class="menu-item">Home</div>
+    <div class="menu-item">Collection Schedule</div>
+    <div class="menu-item">Announcement</div>
+    <div class="menu-item">Tips</div>
+    <div class="menu-item active">Settings</div>
+  </div>
+
+  <div class="main">
+    <div class="activity-title">Activity Log</div>
+
+    <div class="log-box">Sample - Submitted feedback - 2024-11-06 10:02:58</div>
+  
+  </div>
+
+</div>
+
+</body>
+</html>
