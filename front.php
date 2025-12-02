@@ -32,6 +32,7 @@ $status_contamination = "4.8%";
         font-size: 42px;
         line-height: 1.2;
         margin-bottom: 10px;
+        text-align: center;
     }
 
     .button {
@@ -53,7 +54,7 @@ $status_contamination = "4.8%";
 
     .card {
         background: #111d11;
-        padding: 20px;
+        padding: 20px , 30px , 40px;
         border-radius: 10px;
         width: 150px;
         text-align: center;
@@ -94,37 +95,58 @@ $status_contamination = "4.8%";
         padding: 20px;
         border-radius: 10px;
     }
-    .navbar {
-        background: #111d11;
-        padding: 10px 20px;
-        border-radius: 10px;
-        margin-bottom: 30px;
-        display: flex;
-        justify-content: space-between;
-        align-items: left;
-    }
+.navbar {
+    background: #111d11;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+}
+
+.nav-link {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.nav-link:hover {
+    opacity: 0.7;
+}
+.about
+{
+    text-align: center;
+    margin-right: 20px;
+    padding-right: 500px;
+    
+}
+
+   
 
 </style>
 </head>
 
 <body>
 
-<div class="container">
-    <div class=navbar>
-        <h2>login</h2>
-        <h2>sign up</h2>
+<div class="nav">
+    <div class=left>
+        <a href="login.php" class="nav-link">Login</a>
+        <a href="signup.php" class="nav-link">Sign Up</a>
     </div>
 
     <p style="opacity:0.7;">Smart Waste Management & Monitoring Recycling System</p>
 
     <h1>Track waste, boost<br> recycling, and hit<br> sustainability goals</h1>
 
-    <p style="opacity:0.7; max-width: 600px;">
+    <p class="about"
+        style="opacity:0.7; max-width: 600px;">
         Up Cycle unifies bin sensors, route data, and recycling analytics into one dashboard,
         so operations teams make faster, greener decisions.
     </p>
 
-    <a class="button">Explore features</a>
+    <a class="button" href="map.php"> Routes</a>
 
     <div class="status-cards">
         <div class="card">
