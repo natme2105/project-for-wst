@@ -1,24 +1,41 @@
 <?php
+session_start();
 include 'connection.php';
 $login_message = "";
 
 if (isset($_POST["login"])) {
 
-    $username = $_POST["username"];
+    $email = $_POST["email"];
     $password = $_POST["password"];
 
-    $stmt = $conn->prepare("SELECT id FROM users WHERE username=? AND password=?");
-    $stmt->bind_param("ss", $username, $password);
-    $stmt->execute();
-    $stmt->store_result();
+    // Query user record
+    $stmt = $conn->prepare("SELECT id FROM users WHERE email=? AND password=?");
 
-    if ($stmt->num_rows == 1) {
-        $login_message = "Login successful!";
-    } else {
-        $login_message = "Invalid username or password.";
+    if (!$stmt) {
+        die("SQL error: " . $conn->error);
+    }
+
+    $stmt->bind_param("ss", $email, $password);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // Check if user exists
+    if ($result->num_rows == 1) {
+
+        $row = $result->fetch_assoc();
+        $_SESSION['user_id'] = $row['id'];  // ← Save user ID for activity logs
+
+        // Redirect to user.php
+        header("Location: user.php");
+        exit;
+    } 
+    else {
+        $login_message = "Invalid email or password.";
     }
 }
 ?>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -100,16 +117,18 @@ if (isset($_POST["login"])) {
     <div class="msg"><?= $login_message ?></div>
 
     <form method="POST">
-        <div class="input-box">
-            <input type="text" name="username" placeholder="Enter username" required>
-        </div>
+    <div class="input-box">
+        <input type="text" name="email" placeholder="Enter email" required>
+    </div>
 
-        <div class="input-box">
-            <input type="password" name="password" placeholder="Enter password" required>
-        </div>
+    <div class="input-box">
+        <input type="password" name="password" placeholder="Enter password" required>
+    </div>
+        <a href="signup.php" style="color:white; font-size:14px; text-decoration:none;">Don't have an account? Sign up</a>
+        <br><br>
+    <button type="submit" name="login">Login</button>
+</form>
 
-        <button type="submit" name="login">Login</button>
-    </form>
 </div>
 
 </body>

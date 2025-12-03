@@ -9,12 +9,12 @@
     body {
         margin: 0;
         font-family: Arial, sans-serif;
-        background: #e1e1e1;
+        background: #d6b0b065;
     }
 
-    /* Top Bar */
+  
     .topbar {
-        background: #0c6dce;
+        background: #f10404ff;
         padding: 10px 20px;
         color: white;
         font-size: 15px;
@@ -22,7 +22,7 @@
         justify-content: space-between;
     }
 
-    /* Sidebar */
+    
     .sidebar {
         width: 150px;
         background: #2f3b4a;
@@ -76,13 +76,13 @@
 </head>
 <body>
 
-<!-- Top Bar -->
+
 <div class="topbar">
     <div>User / Home</div>
     <div>User</div>
 </div>
 
-<!-- Sidebar -->
+
 <div class="sidebar">
     <a href="user.php">Home</a>
     <a href="collectionschedule.php">Collection Schedule</a>
@@ -91,7 +91,7 @@
     <a href="setting.php">Settings</a>
 </div>
 conne
-<!-- Main Content -->
+
 <div class="content">
     <h2>Welcome to Up Cycle: Waste Management & Recycling Monitoring System</h2>
 

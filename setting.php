@@ -105,7 +105,7 @@
 </div>
 
 <div class="sidebar">
-    <a href="home.php">Home</a>
+    <a href="user.php">Home</a>
     <a href="collection.php">Collection Schedule</a>
     <a href="announcement.php">Announcement</a>
     <a href="tips.php">Tips</a>
@@ -116,7 +116,7 @@
     <div class="settings-container">
         <h2>Settings</h2>
 
-        <button class="settings-btn" onclick="location.href='activity_log.php'">Activity Log</button>
+        <button class="settings-btn" onclick="location.href='activitylog.php'">Activity Log</button>
         <button class="settings-btn" onclick="location.href='feedback.php'">User Feedback</button>
         <button class="settings-btn" onclick="location.href='user_report.php'">User Report</button>
         <br>
