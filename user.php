@@ -90,7 +90,7 @@
     <a href="tips.php">Tips</a>
     <a href="setting.php">Settings</a>
 </div>
-conne
+
 
 <div class="content">
     <h2>Welcome to Up Cycle: Waste Management & Recycling Monitoring System</h2>

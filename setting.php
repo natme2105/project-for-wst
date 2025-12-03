@@ -9,7 +9,6 @@
             background: #f0f0f0;
         }
 
-        /* TOP BAR */
         .topbar {
             width: 100%;
             background: #1e73be;
@@ -20,7 +19,7 @@
             justify-content: space-between;
         }
 
-        /* SIDEBAR */
+     
         .sidebar {
             width: 200px;
             height: 100vh;
@@ -46,13 +45,12 @@
             background: #1e2a38;
         }
 
-        /* MAIN CONTENT */
+  
         .content {
             margin-left: 220px;
             padding: 20px;
         }
 
-        /* CENTER PANEL */
         .settings-container {
             text-align: center;
             margin-top: 50px;
@@ -62,7 +60,6 @@
             margin-bottom: 30px;
         }
 
-        /* BUTTON STYLE */
         .settings-btn {
             padding: 10px 20px;
             border: 1px solid #1e73be;
@@ -78,7 +75,7 @@
             background: #e6f0ff;
         }
 
-        /* LOGOUT BUTTON */
+        
         .logout-btn {
             position: fixed;
             right: 30px;

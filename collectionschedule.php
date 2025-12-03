@@ -2,10 +2,7 @@
 session_start();
 include "connection.php";
 
-// Example: remove once login sets this
-// $_SESSION['full_name'] = "Nathaniel Gutierrez";
 
-// Fetch schedule from database
 $schedule = $conn->query("SELECT * FROM collection_schedule");
 ?>
 

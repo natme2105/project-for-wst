@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <title>User | Reports</title>
 <meta charset="UTF-8">
 <style>
-/* your CSS here */
+
 </style>
 </head>
 

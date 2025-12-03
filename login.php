@@ -8,7 +8,7 @@ if (isset($_POST["login"])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
 
-    // Query user record
+    
     $stmt = $conn->prepare("SELECT id FROM users WHERE email=? AND password=?");
 
     if (!$stmt) {
@@ -19,13 +19,13 @@ if (isset($_POST["login"])) {
     $stmt->execute();
     $result = $stmt->get_result();
 
-    // Check if user exists
+    
     if ($result->num_rows == 1) {
 
         $row = $result->fetch_assoc();
-        $_SESSION['user_id'] = $row['id'];  // ← Save user ID for activity logs
+        $_SESSION['user_id'] = $row['id'];  
 
-        // Redirect to user.php
+        
         header("Location: user.php");
         exit;
     } 

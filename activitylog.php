@@ -1,6 +1,6 @@
 <?php
 include "connection.php";
-// Fetch Logs
+
 $sql = "SELECT activity_text, created_at 
         FROM activity_logs 
         WHERE user_id = ?
@@ -77,7 +77,7 @@ $result = $stmt->get_result();
 
 <body>
 
-<!-- LEFT MENU -->
+
 <div class="sidebar">
     <a href="user.php">Home</a>
     <a href="collection.php">Collection Schedule</a>
@@ -85,7 +85,7 @@ $result = $stmt->get_result();
      <a href="settings.php" class="active">Settings</a>
 </div>
 
-<!-- MAIN -->
+
 <div class="container">
 
     <div class="title-bar">Activity Log</div>

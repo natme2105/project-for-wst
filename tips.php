@@ -1,7 +1,7 @@
 <?php
 include "connection.php";
 
-// Fetch tips from database
+
 $tips = [];
 $sql = $conn->query("SELECT tip FROM tips ORDER BY id DESC");
 
